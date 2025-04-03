@@ -22,28 +22,28 @@
     "require": {
         "php": "^8.2",
         "nesbot/carbon": "^2.72.6",
-        "hypervel/core": "^0.1",
-        "hypervel/filesystem": "^0.1",
-        "hypervel/support": "^0.1",
-        "hypervel/http": "^0.1",
-        "hyperf/config": "~3.1.0",
-        "hyperf/di": "~3.1.0",
-        "hyperf/support": "~3.1.0",
-        "hyperf/command": "~3.1.0",
-        "hyperf/collection": "~3.1.0",
-        "hyperf/context": "~3.1.0",
-        "hyperf/http-server": "~3.1.0",
-        "hyperf/stringable": "~3.1.0",
-        "hyperf/dispatcher": "~3.1.0",
-        "hyperf/database": "~3.1.0",
-        "hyperf/contract": "~3.1.0",
-        "hyperf/signal": "~3.1.0",
+        "hypervel/core": "dev-main",
+        "hypervel/filesystem": "dev-main",
+        "hypervel/support": "dev-main",
+        "hypervel/http": "dev-main",
+        "hyperf/config": "dev-3.2",
+        "hyperf/di": "dev-3.2",
+        "hyperf/support": "dev-3.2",
+        "hyperf/command": "dev-3.2",
+        "hyperf/collection": "dev-3.2",
+        "hyperf/context": "dev-3.2",
+        "hyperf/http-server": "dev-3.2",
+        "hyperf/stringable": "dev-3.2",
+        "hyperf/dispatcher": "dev-3.2",
+        "hyperf/database": "dev-3.2",
+        "hyperf/contract": "dev-3.2",
+        "hyperf/signal": "dev-3.2",
         "hyperf/engine": "^2.1",
-        "hyperf/db-connection": "~3.1.0",
-        "hyperf/validation": "~3.1.0",
-        "hyperf/framework": "~3.1.0",
-        "friendsofhyperf/pretty-console": "~3.1.0",
-        "friendsofhyperf/command-signals": "~3.1.0",
+        "hyperf/db-connection": "dev-3.2",
+        "hyperf/validation": "dev-3.2",
+        "hyperf/framework": "dev-3.2",
+        "friendsofhyperf/pretty-console": "dev-3.2",
+        "friendsofhyperf/command-signals": "dev-3.2",
         "symfony/error-handler": "^6.3"
     },
     "require-dev": {
@@ -73,5 +73,23 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/core" 
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/support" 
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/filesystem" 
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/http" 
+        }
+    ]
 }
