@@ -91,6 +91,10 @@
         {
             "type": "github",
             "url": "https://github.com/kingIZZZY/http"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/translation"
         }
     ]
 }
