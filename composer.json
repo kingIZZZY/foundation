@@ -26,6 +26,7 @@
         "hypervel/filesystem": "dev-edge-hyperf3.2",
         "hypervel/support": "dev-edge-hyperf3.2",
         "hypervel/http": "dev-edge-hyperf3.2",
+        "hypervel/translation": "dev-edge-hyperf3.2",
         "hyperf/config": "3.2.x-dev",
         "hyperf/di": "3.2.x-dev",
         "hyperf/support": "3.2.x-dev",
