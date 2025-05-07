@@ -181,6 +181,38 @@ class Application extends Container implements ApplicationContract
     }
 
     /**
+     * Get the path to the application configuration files.
+     */
+    public function configPath(string $path = ''): string
+    {
+        return $this->joinPaths($this->basePath('config'), $path);
+    }
+
+    /**
+     * Get the path to the database directory.
+     */
+    public function databasePath(string $path = ''): string
+    {
+        return $this->joinPaths($this->basePath('database'), $path);
+    }
+
+    /**
+     * Get the path to the language files.
+     */
+    public function langPath(string $path = ''): string
+    {
+        return $this->joinPaths($this->basePath('lang'), $path);
+    }
+
+    /**
+     * Get the path to the public directory.
+     */
+    public function publicPath(string $path = ''): string
+    {
+        return $this->joinPaths($this->basePath('public'), $path);
+    }
+
+    /**
      * Get the path to the resources directory.
      */
     public function resourcePath(string $path = ''): string
@@ -479,7 +511,7 @@ class Application extends Container implements ApplicationContract
      */
     public function isLocale(string $locale): bool
     {
-        return $this['translator']->getLocale() === $locale;
+        return $this->getLocale() === $locale;
     }
 
     /**
@@ -495,7 +527,7 @@ class Application extends Container implements ApplicationContract
      */
     public function getFallbackLocale(): string
     {
-        return $this['config']->get('app.fallback_locale');
+        return $this['translator']->getFallback();
     }
 
     /**
@@ -530,7 +562,7 @@ class Application extends Container implements ApplicationContract
             ],
             \Psr\EventDispatcher\EventDispatcherInterface::class => [
                 'events',
-                \Hypervel\Event\Contracts\EventDispatcherContract::class,
+                \Hypervel\Event\Contracts\Dispatcher::class,
             ],
             \Hyperf\HttpServer\Router\DispatcherFactory::class => ['router'],
             \Psr\Log\LoggerInterface::class => ['log'],
@@ -551,7 +583,14 @@ class Application extends Container implements ApplicationContract
                 'filesystem',
                 \Hypervel\Filesystem\FilesystemManager::class,
             ],
-            \Hyperf\Contract\TranslatorInterface::class => ['translator'],
+            \Hypervel\Translation\Contracts\Loader::class => [
+                'translator.loader',
+                \Hyperf\Contract\TranslatorLoaderInterface::class,
+            ],
+            \Hypervel\Translation\Contracts\Translator::class => [
+                'translator',
+                \Hyperf\Contract\TranslatorInterface::class,
+            ],
             \Hyperf\Validation\Contract\ValidatorFactoryInterface::class => ['validator'],
             \Psr\Http\Message\ServerRequestInterface::class => [
                 'request',
@@ -559,13 +598,14 @@ class Application extends Container implements ApplicationContract
                 \Hyperf\HttpServer\Request::class,
                 \Hypervel\Http\Contracts\RequestContract::class,
             ],
-            \Hyperf\HttpServer\Contract\ResponseInterface::class => [
+            \Hypervel\Http\Contracts\ResponseContract::class => [
                 'response',
+                \Hyperf\HttpServer\Contract\ResponseInterface::class,
                 \Hyperf\HttpServer\Response::class,
             ],
             \Hyperf\DbConnection\Db::class => ['db'],
             \Hypervel\Database\Schema\SchemaProxy::class => ['db.schema'],
-            \Hypervel\Auth\Contracts\FactoryContract::class => [
+            \Hypervel\Auth\Contracts\Factory::class => [
                 'auth',
                 \Hypervel\Auth\AuthManager::class,
             ],

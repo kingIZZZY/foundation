@@ -11,7 +11,7 @@ use Hyperf\Stringable\Stringable;
 use Hyperf\Validation\Contract\ValidatorFactoryInterface;
 use Hyperf\ViewEngine\Contract\FactoryInterface;
 use Hyperf\ViewEngine\Contract\ViewInterface;
-use Hypervel\Auth\Contracts\FactoryContract as AuthFactoryContract;
+use Hypervel\Auth\Contracts\Factory as AuthFactoryContract;
 use Hypervel\Auth\Contracts\Gate;
 use Hypervel\Auth\Contracts\Guard;
 use Hypervel\Broadcasting\Contracts\Factory as BroadcastFactory;
@@ -32,6 +32,7 @@ use Hypervel\Session\Contracts\Session as SessionContract;
 use Hypervel\Support\Contracts\Responsable;
 use Hypervel\Support\HtmlString;
 use Hypervel\Support\Mix;
+use Hypervel\Translation\Contracts\Translator as TranslatorContract;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
@@ -137,7 +138,7 @@ if (! function_exists('database_path')) {
      */
     function database_path(string $path = ''): string
     {
-        return join_paths(base_path('database'), $path);
+        return app()->databasePath($path);
     }
 }
 
@@ -147,7 +148,7 @@ if (! function_exists('storage_path')) {
      */
     function storage_path(string $path = ''): string
     {
-        return join_paths(base_path('storage'), $path);
+        return app()->storagePath($path);
     }
 }
 
@@ -157,7 +158,7 @@ if (! function_exists('config_path')) {
      */
     function config_path(string $path = ''): string
     {
-        return join_paths(base_path('config'), $path);
+        return app()->configPath($path);
     }
 }
 
@@ -167,7 +168,7 @@ if (! function_exists('resource_path')) {
      */
     function resource_path(string $path = ''): string
     {
-        return join_paths(base_path('resources'), $path);
+        return app()->resourcePath($path);
     }
 }
 
@@ -177,7 +178,7 @@ if (! function_exists('lang_path')) {
      */
     function lang_path(string $path = ''): string
     {
-        return join_paths(base_path('lang'), $path);
+        return app()->langPath($path);
     }
 }
 
@@ -187,7 +188,7 @@ if (! function_exists('public_path')) {
      */
     function public_path(string $path = ''): string
     {
-        return join_paths(base_path('public'), $path);
+        return app()->publicPath($path);
     }
 }
 
@@ -676,23 +677,34 @@ if (! function_exists('auth')) {
 }
 
 if (! function_exists('trans')) {
-    function trans(string $key, array $replace = [], ?string $locale = null)
+    /**
+     * Translate the given message.
+     *
+     * @return ($key is null ? TranslatorContract : array|string)
+     */
+    function trans(?string $key = null, array $replace = [], ?string $locale = null): array|string|TranslatorContract
     {
-        return \Hyperf\Translation\trans($key, $replace, $locale);
+        return \Hypervel\Translation\trans($key, $replace, $locale);
     }
 }
 
 if (! function_exists('trans_choice')) {
-    function trans_choice(string $key, $number, array $replace = [], ?string $locale = null): string
+    /**
+     * Translates the given message based on a count.
+     */
+    function trans_choice(string $key, array|Countable|float|int $number, array $replace = [], ?string $locale = null): string
     {
-        return \Hyperf\Translation\trans_choice($key, $number, $replace, $locale);
+        return \Hypervel\Translation\trans_choice($key, $number, $replace, $locale);
     }
 }
 
 if (! function_exists('__')) {
-    function __(string $key, array $replace = [], ?string $locale = null)
+    /**
+     * Translate the given message.
+     */
+    function __(?string $key = null, array $replace = [], ?string $locale = null): null|array|string
     {
-        return \Hyperf\Translation\trans($key, $replace, $locale);
+        return \Hypervel\Translation\trans($key, $replace, $locale);
     }
 }
 

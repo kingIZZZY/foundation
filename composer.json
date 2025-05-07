@@ -22,32 +22,32 @@
     "require": {
         "php": "^8.2",
         "nesbot/carbon": "^2.72.6",
-        "hypervel/core": "^0.1",
-        "hypervel/filesystem": "^0.1",
-        "hypervel/support": "^0.1",
-        "hypervel/http": "^0.1",
-        "hyperf/config": "~3.1.0",
-        "hyperf/di": "~3.1.0",
-        "hyperf/support": "~3.1.0",
-        "hyperf/command": "~3.1.0",
-        "hyperf/collection": "~3.1.0",
-        "hyperf/context": "~3.1.0",
-        "hyperf/http-server": "~3.1.0",
-        "hyperf/stringable": "~3.1.0",
-        "hyperf/dispatcher": "~3.1.0",
-        "hyperf/database": "~3.1.0",
-        "hyperf/contract": "~3.1.0",
-        "hyperf/signal": "~3.1.0",
+        "hypervel/core": "dev-edge-hyperf3.2",
+        "hypervel/filesystem": "dev-edge-hyperf3.2",
+        "hypervel/support": "dev-edge-hyperf3.2",
+        "hypervel/http": "dev-edge-hyperf3.2",
+        "hyperf/config": "3.2.x-dev",
+        "hyperf/di": "3.2.x-dev",
+        "hyperf/support": "3.2.x-dev",
+        "hyperf/command": "3.2.x-dev",
+        "hyperf/collection": "3.2.x-dev",
+        "hyperf/context": "3.2.x-dev",
+        "hyperf/http-server": "3.2.x-dev",
+        "hyperf/stringable": "3.2.x-dev",
+        "hyperf/dispatcher": "3.2.x-dev",
+        "hyperf/database": "3.2.x-dev",
+        "hyperf/contract": "3.2.x-dev",
+        "hyperf/signal": "3.2.x-dev",
         "hyperf/engine": "^2.1",
-        "hyperf/db-connection": "~3.1.0",
-        "hyperf/validation": "~3.1.0",
-        "hyperf/framework": "~3.1.0",
-        "friendsofhyperf/pretty-console": "~3.1.0",
-        "friendsofhyperf/command-signals": "~3.1.0",
+        "hyperf/db-connection": "3.2.x-dev",
+        "hyperf/validation": "3.2.x-dev",
+        "hyperf/framework": "3.2.x-dev",
+        "friendsofhyperf/pretty-console": "3.2.x-dev",
+        "friendsofhyperf/command-signals": "3.2.x-dev",
         "symfony/error-handler": "^6.3"
     },
     "require-dev": {
-        "hyperf/testing": "~3.1.0"
+        "hyperf/testing": "3.2.x-dev"
     },
     "autoload": {
         "psr-4": {
@@ -61,7 +61,7 @@
         "hyperf": {
             "config": "Hypervel\\Foundation\\ConfigProvider"
         },
-        "hypervel" : {
+        "hypervel": {
             "providers": [
                 "Hypervel\\Foundation\\Providers\\FoundationServiceProvider"
             ]
@@ -73,5 +73,23 @@
     "config": {
         "sort-packages": true
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/core"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/filesystem"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/support"
+        },
+        {
+            "type": "github",
+            "url": "https://github.com/kingIZZZY/http"
+        }
+    ]
 }
